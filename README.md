@@ -16,16 +16,16 @@ nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no 
 ### API Rest
 - Navegar até o diretório __rest__ e executar o arquivo __main.go__:
 
-    cd ./rest
-    go run main.go
+    `cd ./rest`
+    `go run main.go`
 
 - Executar via Postman, uma requisição POST para o endereço http://localhost:8080/verify
 
 ### GraphQL
-- Navegar até o diretório __rest__ e executar o arquivo __main.go__:
+- Navegar até o diretório __graphql__ e executar o arquivo __main.go__:
 
-    cd ./rest
-    go run main.go
+    `cd ./graphql`
+    `go run main.go`
 
 - Acessar http://localhost:8080/graphql
 - Executar a consulta verify no "Playground"
