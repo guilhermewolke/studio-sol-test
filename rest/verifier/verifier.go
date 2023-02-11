@@ -19,6 +19,7 @@ var (
 func ReleaseTheKraken(request dto.Request) dto.Response {
 	var response dto.Response
 	response.Verify = true
+	response.NoMatch = make([]string, 0, 6)
 
 	for _, v := range request.Rules {
 		switch v.RuleName {
@@ -35,7 +36,10 @@ func ReleaseTheKraken(request dto.Request) dto.Response {
 		case NoRepeatedRule:
 			NoRepeated(request.Password, v, &response)
 		}
+	}
 
+	if len(response.NoMatch) > 0 {
+		response.Verify = false
 	}
 
 	return response
@@ -44,7 +48,6 @@ func ReleaseTheKraken(request dto.Request) dto.Response {
 func MinSize(password string, obj dto.Rule, response *dto.Response) {
 	log.Printf("MinSize - String: %s | size: %d | mínimo solicitado: %d", password, len(password), obj.Value)
 	if len(password) < obj.Value {
-		response.Verify = false
 		response.NoMatch = append(response.NoMatch, MinSizeRule)
 	}
 }
@@ -58,7 +61,6 @@ func MinUppercase(password string, obj dto.Rule, response *dto.Response) {
 	}
 	log.Printf("MinUppercase - String: %s | Quantidade de caracteres em maiúsculo: %d | mínimo solicitado: %d", password, count, obj.Value)
 	if count < obj.Value {
-		response.Verify = false
 		response.NoMatch = append(response.NoMatch, MinUppercaseRule)
 	}
 }
@@ -74,7 +76,6 @@ func MinLowercase(password string, obj dto.Rule, response *dto.Response) {
 	log.Printf("MinLowercase - String: %s | Quantidade de caracteres em minúsculo: %d | mínimo solicitado: %d", password, count, obj.Value)
 
 	if count < obj.Value {
-		response.Verify = false
 		response.NoMatch = append(response.NoMatch, MinLowercaseRule)
 	}
 }
@@ -90,7 +91,6 @@ func MinSpecialChars(password string, obj dto.Rule, response *dto.Response) {
 	log.Printf("MinSpecialChars - String: %s | Quantidade de caracteres especiais: %d | mínimo solicitado: %d", password, count, obj.Value)
 
 	if count < obj.Value {
-		response.Verify = false
 		response.NoMatch = append(response.NoMatch, MinSpecialCharsRule)
 	}
 }
@@ -106,7 +106,6 @@ func MinDigit(password string, obj dto.Rule, response *dto.Response) {
 	log.Printf("MinDigit - String: %s | Quantidade de números: %d | mínimo solicitado: %d", password, count, obj.Value)
 
 	if count < obj.Value {
-		response.Verify = false
 		response.NoMatch = append(response.NoMatch, MinDigitRule)
 	}
 }
@@ -121,7 +120,6 @@ func NoRepeated(password string, obj dto.Rule, response *dto.Response) {
 		}
 
 		if lastLetter == string(password[i]) {
-			response.Verify = false
 			response.NoMatch = append(response.NoMatch, NoRepeatedRule)
 			break
 		}
