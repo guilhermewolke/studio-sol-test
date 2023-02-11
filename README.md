@@ -17,6 +17,7 @@ nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no 
 - Navegar até o diretório __rest__ e executar o arquivo __main.go__:
 
     `cd ./rest`
+
     `go run main.go`
 
 - Executar via Postman, uma requisição POST para o endereço http://localhost:8080/verify
@@ -25,6 +26,7 @@ nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no 
 - Navegar até o diretório __graphql__ e executar o arquivo __main.go__:
 
     `cd ./graphql`
+    
     `go run main.go`
 
 - Acessar http://localhost:8080/graphql
