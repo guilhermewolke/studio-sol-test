@@ -16,18 +16,54 @@ nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no 
 ### API Rest
 - Navegar até o diretório __rest__ e executar o arquivo __main.go__:
 
-    `cd ./rest`
+    `(studiosol)$ cd rest`
 
-    `go run main.go`
+    `(rest)$ go run main.go`
 
-- Executar via Postman, uma requisição POST para o endereço http://localhost:8080/verify
+- Executar via Postman, uma requisição POST para o endereço http://localhost:8080/verify, com o seguinte formato:
+    ```
+    {
+        "password": "TesteSenhaForte!123&",
+        "rules": [
+            {
+                "rule": "minSize",
+                "value": 8
+            },
+            {
+                "rule": "minSpecialChars",
+                "value": 2
+            },
+            {
+                "rule": "noRepeted",
+                "value": 0
+            },
+            {
+                "rule": "minDigit",
+                "value": 4
+            }
+        ]
+    }
+    ```
 
 ### GraphQL
 - Navegar até o diretório __graphql__ e executar o arquivo __main.go__:
 
-    `cd ./graphql`
+    `(studiosol)$ cd graphql`
     
-    `go run main.go`
+    `(graphql)$ go run main.go`
 
 - Acessar http://localhost:8080/graphql
-- Executar a consulta verify no "Playground"
+- Executar a seguinte query no "Playground":
+    ```
+        query{
+            verify(input: {password:"TesteSenhaForte!123&", rules: [
+                {rule: "minSize",value: 8},
+                {rule: "minSpecialChars",value: 2},
+                {rule: "noRepeted",value: 0},
+                    {rule: "minDigit",value: 3}
+            ]}) {
+                verify
+                noMatch
+            }
+        }
+    ```
