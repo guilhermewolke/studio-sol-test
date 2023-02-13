@@ -50,7 +50,7 @@ nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no 
 
     `(studiosol)$ cd graphql`
     
-    `(graphql)$ go run main.go`
+    `(graphql)$ go run server.go`
 
 - Acessar http://localhost:8080/graphql
 - Executar a seguinte query no "Playground":

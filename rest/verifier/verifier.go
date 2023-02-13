@@ -21,6 +21,9 @@ func ReleaseTheKraken(request dto.Request) dto.Response {
 	response.Verify = true
 	response.NoMatch = make([]string, 0, 6)
 
+	// Para cada uma das regras declaradas na requisição, um método separado irá fazer a validação,
+	// de acordo com os requisitos definidos na propriedade Value, e caso a regra não seja atendida, o método adiciona ao vetor de regras quebradas, o nome
+	// respectivo da regra
 	for _, v := range request.Rules {
 		switch v.RuleName {
 		case MinSizeRule:

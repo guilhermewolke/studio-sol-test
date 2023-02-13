@@ -16,7 +16,7 @@ func main() {
 }
 
 func VerifyHandler(w http.ResponseWriter, r *http.Request) {
-
+	// Barrando qualquer Requisição cujo verbo HTTP não seja POST
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		w.Write([]byte("Método não permitido"))
