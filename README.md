@@ -1,16 +1,16 @@
-# studio-sol-test
-Teste prático do processo seletivo do Studio Sol
+# Validação de senha com REST e GraphQL
+Validação de senha com REST e GraphQL
 
 ## Descrição
-O teste prático para desenvolvedor Backend do Studio Sol consiste em 2 exercícios:
+O exemplo de código abaixo expõe 2 serviços, que tem como objetivo receber uma senha e um conjunto de regras especificadas na requisição. Os 2 serviços são:
 
 ### API REST
-Desenvolver uma API capaz de receber uma requisição via POST, com uma senha, e com um conjunto de regras de validação também enviadas no payload, realizar a validação da senha baseada
+O endpoint é capaz de receber uma requisição via POST, com uma senha, e com um conjunto de regras de validação também enviadas no payload, realizar a validação da senha baseada
 nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no padrão REST
 
 ### API GraphQL
-Desenvolver uma API capaz de receber uma requisição via POST, com uma senha, e com um conjunto de regras de validação também enviadas no payload, realizar a validação da senha baseada
-nos critérios deste conjunto de regras, e devolver um JSON com o resultado, no padrão GraphQL
+O endpoint é capaz de receber uma requisição via GET, com uma senha, e com um conjunto de regras de validação também enviadas na query, realizar a validação da senha baseada
+nos critérios deste conjunto de regras, e devolver o resultado, no padrão GraphQL
 
 ## Modo de usar
 ### API Rest
